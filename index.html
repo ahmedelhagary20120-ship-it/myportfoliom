@@ -172,10 +172,7 @@
         /* PROJECTS SECTION */
         .projects{ padding:80px 10%; text-align:center; }
         .projects h2{ color:#2fffdc; margin-bottom:40px; font-size:36px; }
-        .projects-container{ display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap; }
-        .project-card{ display:flex; justify-content:center; align-items:center; width:240px; height:240px; border-radius:50%; border:5px solid #2fffdc; background:#000; transition:0.4s; cursor:pointer; overflow: hidden; }
-        .project-card:hover{ transform:scale(1.08); box-shadow:0 0 30px rgba(47,255,220,0.6); }
-        .project-card img{ width:100%; height:100%; object-fit: cover; }
+        .projects-container{ display:flex; flex-direction: column; justify-content:center; align-items:center; gap:20px; }
 
         /* EXPERIENCE SECTION */
         .experience-section { padding: 100px 10%; text-align: center; }
@@ -318,16 +315,15 @@
 <section class="projects" id="projects-section">
     <h2 data-aos="fade-down" data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
     <div class="projects-container">
-        <a href="https://ai1.tiiny.site/" target="_blank" class="project-card" data-aos="flip-left"><img src="https://i.postimg.cc/ht43bJgk/Boomerangs.jpg" alt="Project"></a>
-        <a href="https://ontimeburg.tiiny.site" target="_blank" class="project-card" data-aos="flip-left" data-aos-delay="200"><img src="https://i.postimg.cc/c4YMCmqN/Gemini-Generated-Image-9zlfgd9zlfgd9zlf.png" alt="Project"></a>
-        <a href="https://snkrsport.tiiny.site" target="_blank" class="project-card" data-aos="flip-left" data-aos-delay="400"><img src="https://i.postimg.cc/yYJpP9w5/Gemini-Generated-Image-hp2nn5hp2nn5hp2n.png" alt="Project"></a>
-        
-        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-            <a href="https://websites-forsale0.tiiny.site" target="_blank" class="big-contact-btn" data-aos="zoom-in"> 
-                <i class="fa-solid fa-diagram-project"></i> 
-                <span data-en="My Projects" data-ar="مشاريعي">My Projects</span> 
-            </a>
-        </div>
+        <a href="javascript:void(0);" onclick="openProjects()" class="big-contact-btn" data-aos="zoom-in"> 
+            <i class="fa-solid fa-code"></i> 
+            <span data-en="Projects" data-ar="مشاريعي">Projects</span> 
+        </a>
+
+        <a href="https://websites-forsale0.tiiny.site" target="_blank" class="big-contact-btn" data-aos="zoom-in" data-aos-delay="100"> 
+            <i class="fa-solid fa-diagram-project"></i> 
+            <span data-en="Designs for sale" data-ar="تصاميم للبيع">Designs for sale</span> 
+        </a>
     </div>
 </section>
 
@@ -425,6 +421,14 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+    // وظيفة لفتح كود المشاريع الذي طلبته في نافذة جديدة
+    function openProjects() {
+        const projectCode = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>مشاريعي</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>:root {--bg-black: #000000;--card-bg: #0a0a0a;--neon-teal: #0a2e2e;--glow-color: #00f2ff;--text-white: #ffffff;--text-gray: #b0b0b0;} * {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Cairo', sans-serif;} body {background-color: var(--bg-black);color: var(--text-white);padding: 40px 0;} header {text-align: center;margin-bottom: 50px;} header h1 {font-size: 3rem;font-weight: 900;color: var(--text-white);text-shadow: 0 0 15px var(--glow-color);} .container {width: 90%;max-width: 1200px;margin: 0 auto;display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 25px;} .card {background: var(--card-bg);border: 1px solid var(--neon-teal);border-radius: 15px;padding: 30px;transition: all 0.4s ease;position: relative;overflow: hidden;display: flex;flex-direction: column;justify-content: space-between;} .card:hover {border-color: var(--glow-color);box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);transform: translateY(-5px);} .icon-box {font-size: 2rem;color: var(--glow-color);margin-bottom: 15px;text-shadow: 0 0 10px var(--glow-color);} .project-name {font-size: 1.6rem;font-weight: 700;margin-bottom: 12px;color: var(--text-white);} .project-desc {font-size: 1rem;color: var(--text-gray);line-height: 1.6;margin-bottom: 25px;} .btn-link {display: inline-flex;align-items: center;justify-content: center;gap: 10px;background: var(--neon-teal);color: #fff;text-decoration: none;padding: 12px 25px;border-radius: 8px;font-weight: 700;border: 1px solid var(--glow-color);transition: 0.3s;box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);} .btn-link:hover {background: var(--glow-color);color: #000;box-shadow: 0 0 20px var(--glow-color);} @media (max-width: 768px) {header h1 { font-size: 2.2rem; } .container { grid-template-columns: 1fr; }}</style></head><body><header><h1>مشاريعي</h1></header><div class="container"><div class="card"><div><div class="icon-box"><i class="fas fa-robot"></i></div><h3 class="project-name">ai tiny</h3><p class="project-desc">منصة ذكاء اصطناعي متطورة لاستعراض الحلول التقنية المستقبلية وتطبيقات الـ AI الحديثة.</p></div><a href="https://ai1.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-shopping-cart"></i></div><h3 class="project-name">UPlay Shop</h3><p class="project-desc">متجر إلكتروني متكامل للألعاب والمنتجات الرقمية مع واجهة مستخدم احترافية وسهلة التصفح.</p></div><a href="https://uplayshop.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-code"></i></div><h3 class="project-name">Ziad Tech</h3><p class="project-desc">بوابة برمجية لاستعراض أحدث المقالات التقنية والدروس الاحترافية في تطوير الويب.</p></div><a href="https://ziad-tech0.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-utensils"></i></div><h3 class="project-name">OnTime Burger</h3><p class="project-desc">تصميم عصري لمطعم برجر يركز على سرعة الطلب والعرض الجذاب للمنيو والوجبات.</p></div><a href="https://ontimeburg.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-running"></i></div><h3 class="project-name">SNKR Sport</h3><p class="project-desc">متجر رياضي متخصص للأحذية والملابس الرياضية بأحدث صيحات التصميم في عالم التجارة الإلكترونية.</p></div><a href="https://snkrsport.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div></div></body></html>`;
+        const newWin = window.open();
+        newWin.document.write(projectCode);
+        newWin.document.close();
+    }
 </script>
 
 </body>
