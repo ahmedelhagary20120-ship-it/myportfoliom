@@ -46,43 +46,35 @@
             gap: 15px;
         }
 
-        /* --- تصميم زر تبديل اللغة --- */
-        .lang-switch-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* --- تعديل الزرار حسب طلبك --- */
+        .lang-switch-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
             cursor: pointer;
-            z-index: 1002;
-        }
-        .lang-label {
-            font-size: 12px;
-            font-weight: bold;
-            color: #2fffdc;
+            border: 1px solid #2fffdc; /* إطار خفيف بنفس اللون */
+            background-color: #2fffdc; /* اللون اللي طلبته */
+            box-shadow: 0 0 10px rgba(47, 255, 220, 0.2);
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            font-size: 13px;
+            transition: all 0.4s ease;
+            color: black; /* الخط أسود على الخلفية الفاتحة */
+            font-weight: bold;
+            z-index: 1002;
+            white-space: nowrap;
         }
-        .lang-toggle-box {
-            width: 50px;
-            height: 24px;
-            background: rgba(47, 255, 220, 0.1);
-            border: 1px solid #2fffdc;
-            border-radius: 20px;
-            position: relative;
-            transition: 0.4s;
+
+        .lang-switch-btn:hover {
+            letter-spacing: 2px;
+            background-color: black; /* لما حد يلمسه يبقى أسود */
+            color: #2fffdc; /* والخط يقلب للون الفسفوري */
+            box-shadow: 0 0 20px rgba(47, 255, 220, 0.4);
         }
-        .lang-ball {
-            width: 18px;
-            height: 18px;
-            background: #2fffdc;
-            border-radius: 50%;
-            position: absolute;
-            top: 2px;
-            left: 3px;
-            transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 0 10px #2fffdc;
+
+        .lang-switch-btn:active {
+            transform: translateY(3px);
+            transition: 100ms;
         }
-        body.rtl .lang-ball { left: 27px; }
-        body.rtl .lang-toggle-box { background: #2fffdc; }
-        body.rtl .lang-ball { background: #000; box-shadow: none; }
 
         .menu-toggle {
             display: block;
@@ -169,10 +161,34 @@
         .skill-card i { font-size: 50px; color: #2fffdc; }
         .skill-card span { font-weight: bold; font-size: 18px; color: #fff; letter-spacing: 1px; }
 
-        /* PROJECTS SECTION */
+        /* PROJECTS SECTION - تعديل الوهج ليكون مريح للعين */
         .projects{ padding:80px 10%; text-align:center; }
         .projects h2{ color:#2fffdc; margin-bottom:40px; font-size:36px; }
         .projects-container{ display:flex; flex-direction: column; justify-content:center; align-items:center; gap:20px; }
+        
+        .neumorph-card {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            text-decoration: none;
+            border-radius: 40px; /* تقليل الاستدارة قليلاً لشكل أكثر عصرية */
+            background: #0a1a1a; /* خلفية داكنة بدل الفاتحة اللي بتعمي */
+            box-shadow: 10px 10px 30px #000000, -5px -5px 20px rgba(47, 255, 220, 0.1); 
+            padding: 15px;
+            transition: 0.4s ease;
+            border: 1px solid rgba(47, 255, 220, 0.2);
+            cursor: pointer;
+        }
+        .neumorph-card:hover {
+            transform: scale(1.03);
+            border-color: #2fffdc;
+            box-shadow: 0 0 40px rgba(47, 255, 220, 0.2);
+        }
+        .neumorph-card img {
+            width: 100%;
+            border-radius: 30px;
+            display: block;
+        }
 
         /* EXPERIENCE SECTION */
         .experience-section { padding: 100px 10%; text-align: center; }
@@ -196,7 +212,7 @@
         body.rtl { direction: rtl; }
         body.rtl .navbar { justify-content: flex-start; }
         body.rtl .menu-toggle { order: 2; }
-        body.rtl .lang-switch-container { order: 1; }
+        body.rtl .lang-switch-btn { order: 1; }
 
         /* --- ضبط مقاسات الموبايل بدقة --- */
         @media (max-width:768px){
@@ -230,18 +246,14 @@
             .exp-box { width: 100%; max-width: 320px; }
             
             body { overflow-x: hidden; width: 100%; }
+            .lang-switch-btn { padding: 8px 15px; font-size: 11px; }
         }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="lang-switch-container" id="lang-toggle">
-        <span class="lang-label" id="lang-text">EN</span>
-        <div class="lang-toggle-box">
-            <div class="lang-ball"></div>
-        </div>
-    </div>
+    <button class="lang-switch-btn" id="lang-toggle">Switch to Arabic</button>
     
     <div class="menu-toggle" id="mobile-menu">
         <i class="fa-solid fa-bars-staggered"></i>
@@ -261,7 +273,7 @@
         <h1 data-en="Ahmed Mostafa" data-ar="أحمد مصطفى">Ahmed Mostafa</h1>
         <p data-en="Front-End Developer | Self-Taught Programmer" data-ar="مطور واجهات أمامية | مبرمج متعلم ذاتياً">Front-End Developer | Self-Taught Programmer</p>
         <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
-            <img src="https://i.postimg.cc/pTGQdByw/Whats-App-Image-2026-01-20-at-1-13-39-PM.jpg" alt="Ahmed">
+            <img src="https://i.postimg.cc/PxjDFZhQ/Screenshot-2026-02-18-070640.png" alt="Ahmed">
             <div class="hero-description">
                 <span data-en="Passionately creating digital experiences" data-ar="شغوف بصناعة التجارب الرقمية">Passionately creating digital experiences</span><br>
                 <span data-en="Websites designed: 25" data-ar="مواقع تم تصميمها: 25">Websites designed: 25</span><br>
@@ -315,9 +327,20 @@
 <section class="projects" id="projects-section">
     <h2 data-aos="fade-down" data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
     <div class="projects-container">
+        
+        <a href="https://uplayshop.tiiny.site/" target="_blank" class="neumorph-card" data-aos="zoom-in">
+            <img src="https://i.postimg.cc/nL1Yv0fv/Gemini-Generated-Image-i718aii718aii718.png" alt="UPlay Shop Preview">
+        </a>
+
+        <p data-aos="fade-up" style="color: #bffcf3; font-size: 16px; margin: 10px 0 20px 0; max-width: 80%; line-height: 1.5;" 
+           data-en="Check out one of my top designs above! To see the full list of my professional works, click the 'View All Projects' button below." 
+           data-ar="شاهد أحد أفضل تصاميمي أعلاه! للاطلاع على القائمة الكاملة لأعمالي الاحترافية، اضغط على زر 'عرض كافة المشاريع' أدناه.">
+            Check out one of my top designs above! To see the full list of my professional works, click the 'View All Projects' button below.
+        </p>
+
         <a href="javascript:void(0);" onclick="openProjects()" class="big-contact-btn" data-aos="zoom-in"> 
             <i class="fa-solid fa-code"></i> 
-            <span data-en="Projects" data-ar="مشاريعي">Projects</span> 
+            <span data-en="View All Projects" data-ar="عرض كافة المشاريع">View All Projects</span> 
         </a>
 
         <a href="https://websites-forsale0.tiiny.site" target="_blank" class="big-contact-btn" data-aos="zoom-in" data-aos-delay="100"> 
@@ -369,12 +392,13 @@
     const navLinks = document.getElementById('nav-links');
     const toggleIcon = menuToggle.querySelector('i');
     const langToggle = document.getElementById('lang-toggle');
-    const langText = document.getElementById('lang-text');
     let currentLang = 'en';
 
     langToggle.addEventListener('click', () => {
         currentLang = currentLang === 'en' ? 'ar' : 'en';
-        langText.innerText = currentLang.toUpperCase();
+        
+        langToggle.innerText = currentLang === 'en' ? 'Switch to Arabic' : 'Switch to English';
+        
         document.body.classList.toggle('rtl', currentLang === 'ar');
         document.querySelectorAll('[data-en]').forEach(el => {
             el.innerText = el.getAttribute(`data-${currentLang}`);
@@ -422,9 +446,8 @@
 
     document.querySelectorAll('section').forEach(sec => observer.observe(sec));
 
-    // وظيفة لفتح كود المشاريع الذي طلبته في نافذة جديدة
     function openProjects() {
-        const projectCode = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>مشاريعي</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>:root {--bg-black: #000000;--card-bg: #0a0a0a;--neon-teal: #0a2e2e;--glow-color: #00f2ff;--text-white: #ffffff;--text-gray: #b0b0b0;} * {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Cairo', sans-serif;} body {background-color: var(--bg-black);color: var(--text-white);padding: 40px 0;} header {text-align: center;margin-bottom: 50px;} header h1 {font-size: 3rem;font-weight: 900;color: var(--text-white);text-shadow: 0 0 15px var(--glow-color);} .container {width: 90%;max-width: 1200px;margin: 0 auto;display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 25px;} .card {background: var(--card-bg);border: 1px solid var(--neon-teal);border-radius: 15px;padding: 30px;transition: all 0.4s ease;position: relative;overflow: hidden;display: flex;flex-direction: column;justify-content: space-between;} .card:hover {border-color: var(--glow-color);box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);transform: translateY(-5px);} .icon-box {font-size: 2rem;color: var(--glow-color);margin-bottom: 15px;text-shadow: 0 0 10px var(--glow-color);} .project-name {font-size: 1.6rem;font-weight: 700;margin-bottom: 12px;color: var(--text-white);} .project-desc {font-size: 1rem;color: var(--text-gray);line-height: 1.6;margin-bottom: 25px;} .btn-link {display: inline-flex;align-items: center;justify-content: center;gap: 10px;background: var(--neon-teal);color: #fff;text-decoration: none;padding: 12px 25px;border-radius: 8px;font-weight: 700;border: 1px solid var(--glow-color);transition: 0.3s;box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);} .btn-link:hover {background: var(--glow-color);color: #000;box-shadow: 0 0 20px var(--glow-color);} @media (max-width: 768px) {header h1 { font-size: 2.2rem; } .container { grid-template-columns: 1fr; }}</style></head><body><header><h1>مشاريعي</h1></header><div class="container"><div class="card"><div><div class="icon-box"><i class="fas fa-robot"></i></div><h3 class="project-name">ai tiny</h3><p class="project-desc">منصة ذكاء اصطناعي متطورة لاستعراض الحلول التقنية المستقبلية وتطبيقات الـ AI الحديثة.</p></div><a href="https://ai1.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-shopping-cart"></i></div><h3 class="project-name">UPlay Shop</h3><p class="project-desc">متجر إلكتروني متكامل للألعاب والمنتجات الرقمية مع واجهة مستخدم احترافية وسهلة التصفح.</p></div><a href="https://uplayshop.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-code"></i></div><h3 class="project-name">Ziad Tech</h3><p class="project-desc">بوابة برمجية لاستعراض أحدث المقالات التقنية والدروس الاحترافية في تطوير الويب.</p></div><a href="https://ziad-tech0.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-utensils"></i></div><h3 class="project-name">OnTime Burger</h3><p class="project-desc">تصميم عصري لمطعم برجر يركز على سرعة الطلب والعرض الجذاب للمنيو والوجبات.</p></div><a href="https://ontimeburg.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-running"></i></div><h3 class="project-name">SNKR Sport</h3><p class="project-desc">متجر رياضي متخصص للأحذية والملابس الرياضية بأحدث صيحات التصميم في عالم التجارة الإلكترونية.</p></div><a href="https://snkrsport.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div></div></body></html>`;
+        const projectCode = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>مشاريعي</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>:root {--bg-black: #000000;--card-bg: #0a0a0a;--neon-teal: #0a2e2e;--glow-color: #2fffdc;--text-white: #ffffff;--text-gray: #b0b0b0;} * {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Cairo', sans-serif;} body {background-color: var(--bg-black);color: var(--text-white);padding: 40px 0;} header {text-align: center;margin-bottom: 50px;} header h1 {font-size: 3rem;font-weight: 900;color: var(--text-white);text-shadow: 0 0 15px var(--glow-color);} .container {width: 90%;max-width: 1200px;margin: 0 auto;display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 25px;} .card {background: var(--card-bg);border: 1px solid var(--neon-teal);border-radius: 15px;padding: 30px;transition: all 0.4s ease;position: relative;overflow: hidden;display: flex;flex-direction: column;justify-content: space-between;} .card:hover {border-color: var(--glow-color);box-shadow: 0 0 25px rgba(47, 255, 220, 0.2);transform: translateY(-5px);} .icon-box {font-size: 2rem;color: var(--glow-color);margin-bottom: 15px;text-shadow: 0 0 10px var(--glow-color);} .project-name {font-size: 1.6rem;font-weight: 700;margin-bottom: 12px;color: var(--text-white);} .project-desc {font-size: 1rem;color: var(--text-gray);line-height: 1.6;margin-bottom: 25px;} .btn-link {display: inline-flex;align-items: center;justify-content: center;gap: 10px;background: var(--neon-teal);color: #fff;text-decoration: none;padding: 12px 25px;border-radius: 8px;font-weight: 700;border: 1px solid var(--glow-color);transition: 0.3s;box-shadow: 0 0 10px rgba(47, 255, 220, 0.1);} .btn-link:hover {background: var(--glow-color);color: #000;box-shadow: 0 0 20px var(--glow-color);} @media (max-width: 768px) {header h1 { font-size: 2.2rem; } .container { grid-template-columns: 1fr; }}</style></head><body><header><h1>مشاريعي</h1></header><div class="container"><div class="card"><div><div class="icon-box"><i class="fas fa-robot"></i></div><h3 class="project-name">ai tiny</h3><p class="project-desc">منصة ذكاء اصطناعي متطورة لاستعراض الحلول التقنية المستقبلية وتطبيقات الـ AI الحديثة.</p></div><a href="https://ai1.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-shopping-cart"></i></div><h3 class="project-name">UPlay Shop</h3><p class="project-desc">متجر إلكتروني متكامل للألعاب والمنتجات الرقمية مع واجهة مستخدم احترافية وسهلة التصفح.</p></div><a href="https://uplayshop.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-code"></i></div><h3 class="project-name">Ziad Tech</h3><p class="project-desc">بوابة برمجية لاستعراض أحدث المقالات التقنية والدروس الاحترافية في تطوير الويب.</p></div><a href="https://ziad-tech0.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-utensils"></i></div><h3 class="project-name">OnTime Burger</h3><p class="project-desc">تصميم عصري لمطعم برجر يركز على سرعة الطلب والعرض الجذاب للمنيو والوجبات.</p></div><a href="https://ontimeburg.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div><div class="card"><div><div class="icon-box"><i class="fas fa-running"></i></div><h3 class="project-name">SNKR Sport</h3><p class="project-desc">متجر رياضي متخصص للأحذية والملابس الرياضية بأحدث صيحات التصميم في عالم التجارة الإلكترونية.</p></div><a href="https://snkrsport.tiiny.site" target="_blank" class="btn-link">زيارة الموقع <i class="fas fa-external-link-alt"></i></a></div></div></body></html>`;
         const newWin = window.open();
         newWin.document.write(projectCode);
         newWin.document.close();
